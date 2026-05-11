@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'DM Sans', sans-serif;
+    @apply text-slate-100;
+    background: linear-gradient(135deg, #020d07 0%, #041a0c 30%, #061f10 55%, #050e18 80%, #030812 100%);
+    min-height: 100vh;
+  }
+  h1, h2, h3, h4, h5 { font-family: 'Syne', sans-serif; }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #16a34a; border-radius: 999px; }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl p-5 shadow-lg;
+    background: rgba(15, 28, 18, 0.75);
+    border: 1px solid rgba(34, 197, 94, 0.12);
+    backdrop-filter: blur(12px);
+  }
+  .card-glass {
+    @apply rounded-2xl p-5 shadow-xl;
+    background: rgba(15, 28, 18, 0.75);
+    border: 1px solid rgba(34, 197, 94, 0.12);
+    backdrop-filter: blur(16px);
+  }
+  .btn-primary {
+    @apply bg-green-600 hover:bg-green-500 text-white font-medium px-4 py-2 rounded-xl
+           transition-all duration-200 active:scale-95;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(90deg, #4ade80, #34d399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .animate-fade-up {
+    animation: fadeUp 0.5s ease-out both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* ═══════════════════════════════════════════
+   LIGHT MODE — complete, consistent overrides
+   ═══════════════════════════════════════════ */
+html.light {
+  --bg-page:       #f0fdf4;
+  --bg-card:       rgba(255, 255, 255, 0.95);
+  --border-card:   rgba(134, 239, 172, 0.5);
+  --text-primary:  #0f172a;
+  --text-secondary:#374151;
+  --text-muted:    #6b7280;
+}
+
+/* Page background */
+html.light body {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 40%, #ecfdf5 70%, #f0fdf4 100%) !important;
+  color: #0f172a !important;
+}
+
+/* ALL card/glass elements */
+html.light .card,
+html.light .card-glass {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(134, 239, 172, 0.45) !important;
+  box-shadow: 0 2px 20px rgba(34, 197, 94, 0.08) !important;
+}
+
+/* Navbar */
+html.light header {
+  background: rgba(240, 253, 244, 0.92) !important;
+  border-bottom: 1px solid rgba(134, 239, 172, 0.4) !important;
+  box-shadow: 0 1px 12px rgba(34, 197, 94, 0.08) !important;
+}
+
+/* Remove any dark lines in navbar area */
+html.light header * {
+  border-color: rgba(134, 239, 172, 0.3) !important;
+}
+
+/* Main content area background */
+html.light main {
+  background: transparent !important;
+}
+
+/* Wipe all dark slate backgrounds */
+html.light [class*="bg-slate-950"],
+html.light [class*="bg-slate-900"],
+html.light [class*="bg-slate-800"] {
+  background-color: rgba(240, 253, 244, 0.6) !important;
+}
+
+/* Text colors */
+html.light .text-white        { color: #0f172a !important; }
+html.light [class*="text-slate-100"],
+html.light [class*="text-slate-200"] { color: #1e293b !important; }
+html.light [class*="text-slate-400"] { color: #374151 !important; }
+html.light [class*="text-slate-500"] { color: #6b7280 !important; }
+html.light [class*="text-slate-600"] { color: #4b5563 !important; }
+
+/* All borders */
+html.light [class*="border-slate-800"],
+html.light [class*="border-slate-700"] {
+  border-color: rgba(134, 239, 172, 0.35) !important;
+}
+
+/* Inputs */
+html.light input[type="number"],
+html.light input[type="text"] {
+  background: #f0fdf4 !important;
+  border-color: rgba(134, 239, 172, 0.6) !important;
+  color: #0f172a !important;
+}
+
+/* Scrollbar */
+html.light ::-webkit-scrollbar-thumb { background: #86efac; }
+
+/* Chart backgrounds inside cards already handled by .card-glass */
+html.light .recharts-cartesian-grid-horizontal line,
+html.light .recharts-cartesian-grid-vertical line {
+  stroke: rgba(134, 239, 172, 0.3) !important;
+}
+html.light .recharts-text { fill: #6b7280 !important; }
