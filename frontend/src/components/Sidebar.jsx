@@ -276,7 +276,7 @@ export default function Sidebar({ open, onClose }) {
         <div className="px-5 py-4 border-t border-green-900/40">
           <div className="flex items-center gap-2 text-xs" style={{ color: 'rgba(34,197,94,0.35)' }}>
             <Activity className="w-3 h-3" />
-            <span>v1.0.0 · IoT Simulator Active</span>
+            <span>v1.0.0 · Real-Time Active</span>
           </div>
         </div>
       </aside>
