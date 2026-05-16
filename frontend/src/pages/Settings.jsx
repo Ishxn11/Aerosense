@@ -129,7 +129,7 @@ export default function Settings({ onLogout }) {
           <Database className="w-3 h-3" /> System Info
         </p>
         <SettingRow label="Backend URL" description="REST API base URL">
-          <code className="text-xs bg-slate-800 px-2.5 py-1 rounded-lg text-green-400 font-mono">localhost:5000</code>
+          <code className="text-xs bg-slate-800 px-2.5 py-1 rounded-lg text-green-400 font-mono">aerosense-usjt.onrender.com</code>
         </SettingRow>
         <SettingRow label="Database" description="MongoDB connection">
           <code className="text-xs bg-slate-800 px-2.5 py-1 rounded-lg text-green-400 font-mono">aerosense</code>
