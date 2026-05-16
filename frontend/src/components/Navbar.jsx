@@ -1,5 +1,5 @@
 // src/components/Navbar.jsx
-import { Menu, Sun, Moon, Bell, Wifi, WifiOff } from 'lucide-react';
+import { Menu, Sun, Moon, Bell } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 export default function Navbar({ onMenuClick, wsStatus, alerts, onClearAlerts }) {
@@ -42,16 +42,6 @@ export default function Navbar({ onMenuClick, wsStatus, alerts, onClearAlerts })
 
       {/* Right controls */}
       <div className="flex items-center gap-2">
-        {/* WS Status */}
-        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium border
-          ${wsStatus === 'open'
-            ? 'bg-green-500/10 text-green-400 border-green-500/20'
-            : 'bg-red-500/10 text-red-400 border-red-500/20'}`}
-        >
-          {wsStatus === 'open'
-            ? <><Wifi className="w-3 h-3" /> Live</>
-            : <><WifiOff className="w-3 h-3" /> Offline</>}
-        </div>
 
         {/* Bell */}
         <button
