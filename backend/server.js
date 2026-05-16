@@ -54,7 +54,7 @@ mongoose
       console.log(`🚀  AeroSense backend running on http://localhost:${PORT}`);
       console.log(`🔌  WebSocket server ready on ws://localhost:${PORT}`);
     });
-    simulateSensor(wss);
+    // simulateSensor(wss);
   })
   .catch(err => {
     console.error('❌  MongoDB connection failed:', err.message);
