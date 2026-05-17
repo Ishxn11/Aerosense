@@ -32,6 +32,22 @@ export default function Dashboard({ setWsStatus, alerts, setAlerts }) {
       setLatest(lat);
       setHistory(hist.data ?? []);
       setLastUpdate(new Date());
+
+      const settings  = JSON.parse(localStorage.getItem('aerosense-settings') || '{}');
+const threshold = settings.aqiThreshold || 150;
+const alertsOn  = settings.alertsEnabled ?? true;
+
+if (alertsOn && lat.aqi > threshold) {
+  const now = Date.now();
+  if (now - lastAlertTime.current > 30000) {
+    lastAlertTime.current = now;
+    setAlerts(prev => [{
+      type: 'AQI_ALERT',
+      aqi: lat.aqi,
+      threshold: threshold
+    }, ...prev].slice(0, 3));
+  }
+}
     } catch {
       setError('Unable to connect to backend. Is the server running?');
     } finally {
