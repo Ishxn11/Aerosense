@@ -52,6 +52,23 @@ export default function Dashboard({ setWsStatus, alerts, setAlerts }) {
       setLastUpdate(new Date());
       setHistory(prev => [...prev, msg.data].slice(-50));
     }
+    
+    // Check AQI threshold from settings
+const settings = JSON.parse(localStorage.getItem('aerosense-settings') || '{}');
+const threshold = settings.aqiThreshold || 150;
+const alertsOn  = settings.alertsEnabled ?? true;
+
+if (alertsOn && msg.data.aqi > threshold) {
+  const now = Date.now();
+  if (now - lastAlertTime.current > 30000) {
+    lastAlertTime.current = now;
+    setAlerts(prev => [{
+      type: 'AQI_ALERT',
+      message: `AQI is ${msg.data.aqi} — exceeds threshold of ${threshold}`
+    }, ...prev].slice(0, 3));
+  }
+}
+
     if (msg.type === 'AQI_ALERT') {
       const now = Date.now();
       // Debounce: only fire alert once every 30 seconds
