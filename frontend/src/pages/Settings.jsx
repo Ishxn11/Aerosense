@@ -28,11 +28,11 @@ function Toggle({ value, onChange }) {
 
 export default function Settings({ onLogout }) {
   const { dark, toggle } = useTheme();
-  const saved = JSON.parse(localStorage.getItem('aerosense-settings') || '{}');
-const [aqiThreshold,  setAqiThreshold]  = useState(saved.aqiThreshold  || 150);
-const [pollInterval,  setPollInterval]  = useState(saved.pollInterval  || 10);
-const [alertsEnabled, setAlertsEnabled] = useState(saved.alertsEnabled ?? true);
-const [wsEnabled,     setWsEnabled]     = useState(saved.wsEnabled     ?? true);
+  const storedSettings = JSON.parse(localStorage.getItem('aerosense-settings') || '{}');
+  const [aqiThreshold,  setAqiThreshold]  = useState(storedSettings.aqiThreshold  || 150);
+  const [pollInterval,  setPollInterval]  = useState(storedSettings.pollInterval  || 10);
+  const [alertsEnabled, setAlertsEnabled] = useState(storedSettings.alertsEnabled ?? true);
+  const [wsEnabled,     setWsEnabled]     = useState(storedSettings.wsEnabled     ?? true);
   const [saved,         setSaved]         = useState(false);
 
   const handleSave = () => {
