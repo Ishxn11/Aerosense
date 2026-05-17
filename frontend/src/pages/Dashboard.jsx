@@ -63,9 +63,10 @@ if (alertsOn && msg.data.aqi > threshold) {
   if (now - lastAlertTime.current > 30000) {
     lastAlertTime.current = now;
     setAlerts(prev => [{
-      type: 'AQI_ALERT',
-      message: `AQI is ${msg.data.aqi} — exceeds threshold of ${threshold}`
-    }, ...prev].slice(0, 3));
+  type: 'AQI_ALERT',
+  aqi: msg.data.aqi,
+  threshold: threshold
+}, ...prev].slice(0, 3));
   }
 }
 
